@@ -268,6 +268,7 @@
     return;
   }
   isLoading = YES;
+
   [NSTimer scheduledTimerWithTimeInterval:0.1
                                    target:self
                                  selector:@selector(loading)
