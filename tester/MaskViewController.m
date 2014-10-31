@@ -26,6 +26,7 @@
   [self addMaskImages3];
   [self addMaskImages4];
   [self addMaskImages5];
+  [self addMaskImages6];
 
   UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [btn setTitle:@"test" forState:UIControlStateNormal];
@@ -135,6 +136,29 @@
   [self.view addSubview:imgLoading];
 }
 
+- (void)addMaskImages6 {
+
+  UIBezierPath *circlePath =
+      [UIBezierPath bezierPathWithOvalInRect:CGRectMake(90, 100, 100, 100)];
+  UIBezierPath *innerCirclePath =
+      [UIBezierPath bezierPathWithOvalInRect:CGRectMake(40, 110, 80, 80)];
+  [circlePath appendPath:innerCirclePath];
+  //  [circlePath setUsesEvenOddFillRule:YES]; //后便会有说明
+  //  [circlePath addClip];
+
+  CAShapeLayer *cslayer = [[CAShapeLayer alloc] init];
+  cslayer.path = circlePath.CGPath;
+
+  UIImageView *imgView =
+      [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatar.png"]];
+  imgView.layer.mask = cslayer;
+  imgView.clipsToBounds = YES;
+
+  imgView.frame = CGRectMake(120, 350, 200, 200);
+
+  [self.view addSubview:imgView];
+}
+
 - (CGPathRef)pathFromSize:(CGSize)size {
   int iRadius = 8;
   int iSide4 = 12;
@@ -142,18 +166,24 @@
   UIBezierPath *path = [UIBezierPath bezierPath];
   [path moveToPoint:CGPointMake(iRadius * 2, iRadius)];
   [path addLineToPoint:CGPointMake(size.width - iRadius * 2 - iSide4, iRadius)];
-  [path addArcWithCenter:CGPointMake(size.width - iRadius * 2 - iSide4,
-                                     iRadius * 2)
-                  radius:iRadius
-              startAngle:M_PI_2
-                endAngle:0
-               clockwise:YES];
 
+  //  [path addArcWithCenter:CGPointMake(size.width - iRadius * 2 - iSide4,
+  //                                     iRadius * 2)
+  //                  radius:iRadius
+  //              startAngle:M_PI_2
+  //                endAngle:0
+  //               clockwise:YES];
+  [path addLineToPoint:CGPointMake(size.width - iRadius - iSide4, iRadius * 2)];
   [path addLineToPoint:CGPointMake(size.width - iRadius - iSide4,
                                    iRadius * 2 + 20)];
 
+  [path addLineToPoint:CGPointMake(size.width - iRadius, iRadius * 2 + 20 + 6)];
+
   [path addLineToPoint:CGPointMake(size.width - iRadius,
-                                   iRadius * 2 + 20 + iSide3)];
+                                   iRadius * 2 + 20 + iSide3 * 2 - 6)];
+
+  //  [path addLineToPoint:CGPointMake(size.width - iRadius,
+  //                                   iRadius * 2 + 20 + iSide3)];
 
   [path addLineToPoint:CGPointMake(size.width - iRadius - iSide4,
                                    iRadius * 2 + 20 + iSide3 * 2)];
@@ -181,6 +211,16 @@
                clockwise:YES];
 
   [path closePath];
+
+  UIBezierPath *rtCircle = [UIBezierPath
+      bezierPathWithOvalInRect:CGRectMake(size.width - iRadius * 3 - iSide4,
+                                          iRadius, iRadius * 2, iRadius * 2)];
+  [path appendPath:rtCircle];
+
+  UIBezierPath *angleCircle = [UIBezierPath
+      bezierPathWithOvalInRect:CGRectMake(size.width - iRadius - 4,
+                                          iRadius * 2 + 20 + 6, 6, 6)];
+  [path appendPath:angleCircle];
 
   return CGPathCreateCopy(path.CGPath);
 }
