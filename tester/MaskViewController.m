@@ -122,12 +122,12 @@
 
 - (void)addMaskImages5 {
 
-  CAShapeLayer *mskLayer = [[CAShapeLayer alloc] init];
-  mskLayer.path = [self pathOfSector:CGPointMake(90, 90) radius:60];
+  loadingMaskLayer = [[CAShapeLayer alloc] init];
+  loadingMaskLayer.path = [self pathOfSector:CGPointMake(90, 90) radius:60];
 
   imgLoading =
       [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"avatar.png"]];
-  imgLoading.layer.mask = mskLayer;
+  imgLoading.layer.mask = loadingMaskLayer;
   imgLoading.clipsToBounds = YES;
 
   imgLoading.frame = CGRectMake(110, 170, 200, 200);
@@ -249,10 +249,7 @@
     isLoading = NO;
   }
 
-  CAShapeLayer *mskLayer = [[CAShapeLayer alloc] init];
-  mskLayer.path = [self pathOfSector:CGPointMake(90, 90) radius:60];
-
-  imgLoading.layer.mask = mskLayer;
+  loadingMaskLayer.path = [self pathOfSector:CGPointMake(90, 90) radius:60];
 }
 
 @end

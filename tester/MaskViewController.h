@@ -12,5 +12,7 @@
   float curAngle;
   UIImageView *imgLoading;
   BOOL isLoading;
+
+  CAShapeLayer *loadingMaskLayer;
 }
 @end
