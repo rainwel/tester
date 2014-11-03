@@ -120,7 +120,7 @@
       [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5].CGColor;
   backLayer.path = [self pathFromSize:CGSizeMake(151, 151)];
   backLayer.position = CGPointMake(154.5, 29.5);
-  backLayer.opacity = 0.1;
+  backLayer.opacity = 0.15;
   //  backLayer.shadowColor = [UIColor grayColor].CGColor;
   //  backLayer.shadowOffset = CGSizeMake(-0.5, -0.5);
   //  backLayer.shadowOpacity = 0.5;
