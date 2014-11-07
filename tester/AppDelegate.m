@@ -11,6 +11,7 @@
 #import "CAViewController.h"
 #import "CubeViewController.h"
 #import "MaskViewController.h"
+#import "SideBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,9 +26,10 @@
   self.window = [[UIWindow alloc] initWithFrame:cframe];
   self.window.backgroundColor = [UIColor whiteColor];
 
+  SideBarViewController *homeVC = [[SideBarViewController alloc] init];
   //  MaskViewController *homeVC = [[MaskViewController alloc] init];
   //  CubeViewController *homeVC = [[CubeViewController alloc] init];
-  CAViewController *homeVC = [[CAViewController alloc] init];
+  //  CAViewController *homeVC = [[CAViewController alloc] init];
   //  HomeViewController *homeVC = [[HomeViewController alloc] init];
   //  ViewController *homeVC = [[ViewController alloc] init];
   //  PanViewController *homeVC = [[PanViewController alloc] init];
