@@ -7,11 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "HomeViewController.h"
+#import "ViewController.h"
 #import "PanViewController.h"
 #import "CAViewController.h"
 #import "CubeViewController.h"
 #import "MaskViewController.h"
-#import "SideBarViewController.h"
+//#import "SideBarViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,14 +27,15 @@
   CGRect cframe = [[UIScreen mainScreen] bounds];
   self.window = [[UIWindow alloc] initWithFrame:cframe];
   self.window.backgroundColor = [UIColor whiteColor];
-
-  SideBarViewController *homeVC = [[SideBarViewController alloc] init];
-  //  MaskViewController *homeVC = [[MaskViewController alloc] init];
-  //  CubeViewController *homeVC = [[CubeViewController alloc] init];
-  //  CAViewController *homeVC = [[CAViewController alloc] init];
-  //  HomeViewController *homeVC = [[HomeViewController alloc] init];
-  //  ViewController *homeVC = [[ViewController alloc] init];
-  //  PanViewController *homeVC = [[PanViewController alloc] init];
+  UIViewController *homeVC =
+      [[NSClassFromString(@"SideBarViewController") alloc] init];
+  //  UIViewController *homeVC = [[SideBarViewController alloc] init];
+  //  UIViewController *homeVC = [[MaskViewController alloc] init];
+  //  UIViewController *homeVC = [[CubeViewController alloc] init];
+  //  UIViewController *homeVC = [[CAViewController alloc] init];
+  //  UIViewController *homeVC = [[HomeViewController alloc] init];
+  //  UIViewController *homeVC = [[ViewController alloc] init];
+  //  UIViewController *homeVC = [[PanViewController alloc] init];
   [self.window setRootViewController:homeVC];
   [self.window makeKeyAndVisible];
 
