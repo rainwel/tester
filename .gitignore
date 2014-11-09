@@ -17,6 +17,13 @@ DerivedData
 *.ipa
 *.xcuserstate
 *.DS_Store
+cocos2d/build/cocos2d_libs.xcodeproj/xcuserdata/yiliao6.xcuserdatad/
+proj.android/.settings/org.eclipse.jdt.core.prefs
+proj.android/assets/
+proj.android/bin/
+proj.android/libs/armeabi/libawesome.so
+proj.android/obj/
+proj.ios/awesomeott.xcodeproj/project.xcworkspace/xcshareddata/
 # CocoaPods
 #
 # We recommend against adding the Pods directory to your .gitignore. However

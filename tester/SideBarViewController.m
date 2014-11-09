@@ -74,6 +74,7 @@
                 action:@selector(onMenuClick:)
       forControlEvents:UIControlEventTouchUpInside];
   btnMenu.adjustsImageWhenHighlighted = NO;
+  btnMenu.showsTouchWhenHighlighted = NO;
   btnMenu.tag = 1000;
   btnMenu.frame = CGRectMake(mainRect.size.width - kMenuWidth - kMenuPadding,
                              40, kMenuWidth, kMenuHeight);
