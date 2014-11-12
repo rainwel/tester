@@ -293,4 +293,39 @@
   loadingMaskLayer.path = [self pathOfSector:CGPointMake(90, 90) radius:60];
 }
 
+- (UIImage *)image:(UIImage *)image
+           withCap:(int)location
+          capWidth:(NSUInteger)capWidth
+       buttonWidth:(NSUInteger)buttonWidth {
+  UIGraphicsBeginImageContextWithOptions(
+      CGSizeMake(buttonWidth, image.size.height), NO, 0.0);
+
+  if (location == -1) {
+    // Cap Left
+    // To draw the left cap and not the right, we start at 0, and increase the
+    // width of the image by the cap width to push the right cap out of view
+    [image
+        drawInRect:CGRectMake(0, 0, buttonWidth + capWidth, image.size.height)];
+  } else if (location == 1) {
+    // Cap Right
+    // To draw the right cap and not the left, we start at negative the cap
+    // width and increase the width of the image by the cap width to push the
+    // left cap out of view
+    [image drawInRect:CGRectMake(0.0 - capWidth, 0, buttonWidth + capWidth,
+                                 image.size.height)];
+  } else if (location == 0) {
+    // Cap Center
+    // To draw neither cap, we start at negative the cap width and increase the
+    // width of the image by both cap widths to push out both caps out of view
+    [image
+        drawInRect:CGRectMake(0.0 - capWidth, 0, buttonWidth + (capWidth * 2),
+                              image.size.height)];
+  }
+
+  UIImage *resultImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+
+  return resultImage;
+}
+
 @end
